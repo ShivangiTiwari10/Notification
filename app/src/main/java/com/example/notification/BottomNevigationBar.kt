@@ -13,6 +13,8 @@ class BottomNevigationBar : AppCompatActivity() {
         binding = ActivityBottomNevigationBarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         loadFragment(HomeFragment())
         binding.bottomNav.setOnItemSelectedListener() {
             when (it.itemId) {
