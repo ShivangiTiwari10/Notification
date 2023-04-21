@@ -18,20 +18,21 @@ class BottomNevigationBar : AppCompatActivity() {
         loadFragment(HomeFragment())
         binding.bottomNav.setOnItemSelectedListener() {
             when (it.itemId) {
-                R.id.home -> {
+                R.id.home ->
                     loadFragment(HomeFragment())
-                    true
-                }
-                R.id.message -> {
+
+                R.id.message ->
                     loadFragment(MessageFragment())
-                    true
-                }
-                R.id.settings -> {
+
+                R.id.settings ->
                     loadFragment(SettingFragment())
-                    true
+
+                else -> {
+
                 }
-                else -> false
             }
+            true
+
         }
     }
 
