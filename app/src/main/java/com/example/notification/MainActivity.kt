@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity() {
             notificationManager.notify(notificationId, notification)
 
         }
+        binding.btnBottom.setOnClickListener {
+            val inteent = Intent(this, BottomNevigationBar::class.java)
+            startActivity(inteent)
+
+        }
 
 //        one way of notification
 //
