@@ -3,7 +3,9 @@ package com.example.notification
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         createNotificationChannel()
+
+//        pending Intent
+
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
         val notification = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_baseline_insert_emoticon_24)
             .setContentTitle("30 days of app development tutorial")
@@ -36,13 +44,12 @@ class MainActivity : AppCompatActivity() {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setColor(ContextCompat.getColor(this, R.color.purple_200))
+            .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .build()
         val notificationManager = NotificationManagerCompat.from(this)
         binding.btn.setOnClickListener {
-
-
-                notificationManager.notify(notificationId, notification)
+            notificationManager.notify(notificationId, notification)
 
         }
 
@@ -71,6 +78,8 @@ class MainActivity : AppCompatActivity() {
 
 
 //    Another way of notification
+
+//     step 1st make notification channel
 
     private fun createNotificationChannel() {
 
